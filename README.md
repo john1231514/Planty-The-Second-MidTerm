@@ -1,2 +1,2 @@
-# planty-the-second-midterm
+# Planty-The-Second-MidTerm
 second midterm
