@@ -19,7 +19,8 @@ const int air = 5248;
 const int water = 1760;
 const int moistSoil = 3370;
 const int drySoil = 3520;
-
+int last60kmillisSec;
+bool togglePump;
 
 // Run the application and system concurrently in separate threads
 //SYSTEM_THREAD(ENABLED);
@@ -35,16 +36,18 @@ pinMode(S4,OUTPUT);
 
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
+  currentTime = millis ();
+  if((currentTime-last60kmillisSec)>60000) {
+    last60kmillisSec = millis();
   moisture=analogRead(A5);
-    Serial.printf("moisture sensor %i\n", moisture);
-
-  if((currentTime -Last500MillisSec)>500) {
-    Last500MillisSec = millis();
-   digitalWrite(S4,LOW);
+   Serial.printf("moisture sensor %i\n",moisture);
+  
+  if((moisture>drySoil)) { 
+      digitalWrite(S4,HIGH);}
+      delay(500);//remove delay later
+      digitalWrite(S4,LOW);}
   }
-  else{digitalWrite(S4,HIGH);}
+  
 
-
-  }
 
 
