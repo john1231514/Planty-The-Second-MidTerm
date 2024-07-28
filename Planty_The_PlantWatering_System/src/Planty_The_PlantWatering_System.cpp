@@ -52,7 +52,7 @@ int currentTime;
 int moisture;
 const int air = 5248;
 const int water = 1760;
-const int moistSoil = 3370;
+const int moistSoil = 3141;
 const int drySoil = 3520;
 int last60kmillisSec;
 bool togglePump;
